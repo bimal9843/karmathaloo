@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Karmathalo - Hire Freelancers & Find Jobs</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary-color: #37a000;
+            --secondary-color: #2d7d46;
+            --dark-color: #333;
+            --light-color: #f8f9fa;
+        }
+
+        body {
+            line-height: 1.6;
+            color: var(--dark-color);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        header {
+            background: white;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            color: var(--dark-color);
+        }
+
+        .logo span {
+            color: var(--primary-color);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark-color);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .auth-buttons .btn {
+            margin-left: 1rem;
+            padding: 8px 20px;
+            border-radius: 4px;
+            text-decoration: none;
+        }
+
+        .btn-primary {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .btn-outline {
+            border: 1px solid var(--primary-color);
+            color: var(--primary-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: #f5fbf5;
+            padding: 4rem 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .search-bar {
+            max-width: 700px;
+            margin: 0 auto 1rem;
+            display: flex;
+        }
+
+        .search-bar input {
+            flex: 1;
+            padding: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 4px 0 0 4px;
+            font-size: 1rem;
+        }
+
+        .search-bar button {
+            padding: 0 2rem;
+            border: none;
+            background: var(--primary-color);
+            color: white;
+            border-radius: 0 4px 4px 0;
+            cursor: pointer;
+        }
+
+        .popular-searches {
+            margin-top: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .popular-searches a {
+            color: var(--primary-color);
+            margin: 0 0.5rem;
+            text-decoration: none;
+        }
+
+        /* Categories Section */
+        .categories {
+            padding: 4rem 0;
+        }
+
+        .categories h2 {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .category-card {
+            padding: 1.5rem;
+            border: 1px solid #eee;
+            border-radius: 8px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .category-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary-color);
+        }
+
+        .category-card i {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        /* How It Works */
+        .how-it-works {
+            background: #f9f9f9;
+            padding: 4rem 0;
+        }
+
+        .steps-container {
+            display: flex;
+            justify-content: space-between;
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .step {
+            flex: 1;
+            text-align: center;
+            padding: 1.5rem;
+        }
+
+        .step-number {
+            width: 50px;
+            height: 50px;
+            background: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            font-weight: bold;
+        }
+
+        /* Footer */
+        footer {
+            background: #2d2d2d;
+            color: white;
+            padding: 4rem 0 2rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-column h4 {
+            margin-bottom: 1rem;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-column ul a {
+            color: #ccc;
+            text-decoration: none;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid #444;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+            }
+
+            .nav-links {
+                margin: 1rem 0;
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+            }
+
+            .steps-container {
+                flex-direction: column;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .search-bar {
+                flex-direction: column;
+            }
+
+            .search-bar input {
+                border-radius: 4px;
+                margin-bottom: 0.5rem;
+            }
+
+            .search-bar button {
+                border-radius: 4px;
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container nav-container">
+            <div class="logo">
+                <a href="#">Karma<span>thalo</span></a>
+            </div>
+            <nav class="nav-links">
+                <a href="#">Find Work</a>
+                <a href="#">Find Freelancers</a>
+                <a href="#">Resources</a>
+            </nav>
+            <div class="auth-buttons">
+                <a href="#" class="btn btn-outline">Log In</a>
+                <a href="#" class="btn btn-primary">Sign Up</a>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>Find the perfect freelance services for your business</h1>
+            <div class="search-bar">
+                <input type="text" placeholder="What service are you looking for?">
+                <button>Search</button>
+            </div>
+            <div class="popular-searches">
+                Popular: 
+                <a href="#">Web Development</a>
+                <a href="#">Graphic Design</a>
+                <a href="#">Digital Marketing</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="categories container">
+        <h2>Browse talent by category</h2>
+        <div class="category-grid">
+            <div class="category-card">
+                <i class="fas fa-code"></i>
+                <h3>Development & IT</h3>
+                <p>Avg. rate: $50/hr</p>
+            </div>
+            <div class="category-card">
+                <i class="fas fa-paint-brush"></i>
+                <h3>Design & Creative</h3>
+                <p>Avg. rate: $45/hr</p>
+            </div>
+            <div class="category-card">
+                <i class="fas fa-chart-line"></i>
+                <h3>Marketing</h3>
+                <p>Avg. rate: $40/hr</p>
+            </div>
+            <div class="category-card">
+                <i class="fas fa-pen"></i>
+                <h3>Writing & Translation</h3>
+                <p>Avg. rate: $35/hr</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="how-it-works">
+        <div class="container">
+            <h2 style="text-align: center;">How Karmathalo Works</h2>
+            <div class="steps-container">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Post a Job</h3>
+                    <p>Describe your project and required skills</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Review Proposals</h3>
+                    <p>Compare bids and select the best freelancer</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Start Working</h3>
+                    <p>Collaborate securely through our platform</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h4>For Clients</h4>
+                    <ul>
+                        <li><a href="#">How to Hire</a></li>
+                        <li><a href="#">Talent Marketplace</a></li>
+                        <li><a href="#">Project Catalog</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>For Freelancers</h4>
+                    <ul>
+                        <li><a href="#">How to Find Work</a></li>
+                        <li><a href="#">Direct Contracts</a></li>
+                        <li><a href="#">Get Paid</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 Karmathalo. All rights reserved</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuToggle = document.createElement('div');
+            menuToggle.className = 'menu-toggle';
+            menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
+            
+            const header = document.querySelector('header .container');
+            if (window.innerWidth < 768) {
+                header.prepend(menuToggle);
+                
+                const nav = document.querySelector('.nav-links');
+                menuToggle.addEventListener('click', function() {
+                    nav.classList.toggle('active');
+                });
+            }
+        });
+    </script>
+</body>
+</html>
